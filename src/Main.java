@@ -5,7 +5,6 @@ public class Main {
     private static Employee[] employees = new Employee[10];
 
 
-
     public static void main(String[] args) {
 
         employees[0] = new Employee("Michael Scott", 1, 1000);
@@ -21,57 +20,64 @@ public class Main {
 
 
         printAllInfo();
-        System.out.println("Сумма зп всех сотрудников : " + summarizeSalary() );
-        System.out.println("Сотрудник с минимальной ЗП : " + findMinSalaryEmployee() );
-        System.out.println("Сотрудник с максимальной ЗП : " + findMaxSalaryEmployee() );
-        System.out.println("Средняя зп всех сотрудников : " + average_OutSalary() );
+        System.out.println("Сумма зп всех сотрудников : " + summarizeSalary());
+        System.out.println("Сотрудник с минимальной ЗП : " + findMinSalaryEmployee());
+        System.out.println("Сотрудник с максимальной ЗП : " + findMaxSalaryEmployee());
+        System.out.println("Средняя зп всех сотрудников : " + average_OutSalary());
         printAllNames();
 
 
     }
 
-    private static void printAllInfo () {
+    private static void printAllInfo() {
         for (Employee employee : employees) {
             System.out.println(employee);
 
         }
     }
 
-    private static int summarizeSalary () {
-        int totalSum = 0;
-        for (Employee employee : employees) {
-            totalSum += employee.getSalary();
+    private static int summarizeSalary() {
+        int sum = 0;
+        for (int i = 0; i <= employees.length - 1; i++) {
+            if (employees[i] == null) {
+                continue;
+            }
+            sum += employees[i].getSalary();
         }
-        return totalSum;
+        return sum;
     }
 
-    private static Employee findMinSalaryEmployee (){
+
+    private static Employee findMinSalaryEmployee() {
         Employee employeeMinSalary = null;
         for (Employee employee : employees) {
             if (employeeMinSalary == null || employee.getSalary() < employeeMinSalary.getSalary()) {
                 employeeMinSalary = employee;
             }
         }
-            return employeeMinSalary;
+        return employeeMinSalary;
     }
 
-    private static Employee findMaxSalaryEmployee (){
+    private static Employee findMaxSalaryEmployee() {
         Employee employeeMaxSalary = null;
         for (Employee employee : employees) {
             if (employeeMaxSalary == null || employee.getSalary() > employeeMaxSalary.getSalary()) {
                 employeeMaxSalary = employee;
             }
         }
-            return employeeMaxSalary;
+        return employeeMaxSalary;
     }
 
-    private static double average_OutSalary () {
+    private static double average_OutSalary() {
         return (double) summarizeSalary() / employees.length;
     }
 
+
     private static void printAllNames () {
-        for (Employee employee : employees) {
+        for (Employee employee : Main.employees) {
+            if (Main.employees != null) {
             System.out.println(employee.getName());
+            }
 
         }
     }
